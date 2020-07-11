@@ -1,0 +1,62 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+      <ion-title color="dark" size="large" class="drop">
+      𝖓𝖔𝖙𝖙𝖔
+      </ion-title>
+
+    <ion-button [routerLink]="['/registro']" class="drop" size="small" color="light" slot="end">  
+      <ion-icon slot="start" name="star"></ion-icon>Registro</ion-button>
+
+    </ion-toolbar>
+
+
+
+
+</ion-header>
+
+<ion-content>
+  <div class="fullheight xc">
+
+    <ion-item-group>
+
+      <div class="fullheight xc"> 
+      <ion-item>
+        <ion-avatar>
+          <img src="/assets/media/fruit1.png">
+        </ion-avatar>
+        <ion-avatar>
+          <img src="/assets/media/fruit2.png">
+        </ion-avatar>
+         <ion-avatar>
+          <img src="/assets/media/fruit3.png">
+        </ion-avatar>
+          <ion-avatar>
+          <img src="/assets/media/fruit4.png">
+        </ion-avatar>
+      </ion-item>
+      </div>
+
+      <div class="fullheight xc" id="titulo-app">    
+        <ion-label color="success">inicio de sesión</ion-label>     
+      </div>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked">usuario</ion-label>
+        <ion-input color="warning" placeholder="ej: vilma2000"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked">contraseña</ion-label>
+        <ion-input color="danger" type="password" placeholder="******"></ion-input>
+      </ion-item>
+
+       <div class="fullheight xc">  
+        <ion-button color="primary" fill="outline" size="small">acceder</ion-button>
+       </div>
+
+
+   </ion-item-group>
+
+
+  </div>
+</ion-content>
