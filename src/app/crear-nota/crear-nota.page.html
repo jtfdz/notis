@@ -1,0 +1,89 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-title color="dark" size="large" slot="start" class="drop">
+      𝖓𝖔𝖙𝖙𝖔
+    </ion-title>
+
+	   <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>cerrar sesión
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullheight xc">
+    <ion-item-group>
+
+
+      <div class="fullheight xc" id="titulo-app">    
+        <ion-label color="dark">crear nota</ion-label>     
+      </div>
+
+
+      <ion-item>
+        <ion-label color="warning" position="floating">título</ion-label>
+        <container-element [ngSwitch]="seleccionTipo" class="drop">
+           <div *ngSwitchCase="1">
+              <ion-input type="text" placeholder="ej: lista de peliculas" ></ion-input>             
+           </div>
+           <div *ngSwitchCase="2">
+              <ion-input type="text" placeholder="ej: fotos de piscinas" ></ion-input>
+           </div>
+           <div *ngSwitchCase="3">
+              <ion-input type="text" placeholder="ej: cumpleaños de julieta" ></ion-input>
+           </div>
+           <div *ngSwitchDefault>        
+            <ion-input type="text" disabled ></ion-input>
+          </div>
+        </container-element>        
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-label color="secondary">tipo</ion-label>
+          <ion-select [(ngModel)]="seleccionTipo" placeholder="selección">
+            <ion-select-option value="1">texto</ion-select-option>
+            <ion-select-option value="2">imagen</ion-select-option>
+            <ion-select-option value="3">recordatorio</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+
+        <container-element [ngSwitch]="seleccionTipo" class="drop">
+           <div *ngSwitchCase="1">
+              <ion-label color="primary" position="stacked">contenido</ion-label>
+              <ion-textarea inputmode="text" placeholder="ej: mononoke hime, ghost in the shell"></ion-textarea>             
+           </div>
+           <div *ngSwitchCase="2">
+             <ion-label color="primary" position="stacked">seleccione archivo:</ion-label>
+             <ion-input accept="jpg,png" type="file"></ion-input>
+           </div>
+           <div *ngSwitchCase="3">
+               <ion-label color="primary" position="stacked">seleccione fecha:</ion-label>
+                <ion-datetime displayFormat="D-M-YYYY" value="2020-11-17"></ion-datetime>
+                <div class="smallit"><ion-label color="primary" position="stacked" size="small">*aparecerá en tope de dashboard</ion-label></div>
+           </div>
+           <div *ngSwitchDefault>valor no válido.</div>
+        </container-element>
+
+
+
+      </ion-item>
+
+
+
+       <div class="fullheight xc">  
+        <ion-button [routerLink]="['/dashboard']" fill="outline" class="drop" size="small" color="danger" slot="start">  
+          <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>volver
+      </ion-button>
+         <ion-button fill="outline" class="drop" size="small" color="success" slot="start">  
+          <ion-icon slot="start" name="arrow-forward-circle-outline"></ion-icon>guardar
+      </ion-button>
+       </div>
+
+   </ion-item-group>
+  </div>
+</ion-content>

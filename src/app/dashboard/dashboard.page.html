@@ -1,9 +1,31 @@
-<ion-header>
+<ion-header  class="ion-no-border">
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+      <ion-title color="dark" size="large" class="drop">
+      𝖓𝖔𝖙𝖙𝖔
+      </ion-title>
+
+    <ion-button (click)="logout()" class="drop" size="small" color="danger" slot="end">  
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>cerrar sesión</ion-button>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-buttons>
+    <ion-button [routerLink]="['/estadisticas']" fill="outline" class="drop" size="small" color="dark" slot="start">  
+      <ion-icon name="stats-chart-outline"></ion-icon>estadísticas
+  </ion-button>
+
+  <ion-button [routerLink]="['/crearnota']" fill="outline" class="drop" size="small" color="dark" slot="end"><ion-icon name="add"></ion-icon>crear nota</ion-button>
+      </ion-buttons>
+
+
+
+
+
+
+
+	
 
 </ion-content>

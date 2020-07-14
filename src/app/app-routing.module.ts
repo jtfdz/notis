@@ -12,16 +12,20 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
-  },
-  {
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'estadisticas',
+    loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
+  },
+  {
+    path: 'crearnota',
+    loadChildren: () => import('./crear-nota/crear-nota.module').then( m => m.CrearNotaPageModule)
   },
 ];
 

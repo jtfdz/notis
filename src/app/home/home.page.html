@@ -1,22 +1,15 @@
 <ion-header  class="ion-no-border">
   <ion-toolbar>
-      <ion-title color="dark" size="large" class="drop">
-      𝖓𝖔𝖙𝖙𝖔
-      </ion-title>
+    <ion-title color="dark" size="large" class="drop">
+    𝖓𝖔𝖙𝖙𝖔
+    </ion-title>
 
-    <ion-button [routerLink]="['/registro']" class="drop" size="small" color="light" slot="end">  
-      <ion-icon slot="start" name="star"></ion-icon>Registro</ion-button>
-
-    </ion-toolbar>
-
-
-
-
+    <ion-button [routerLink]="['/registro']" class="drop" fill="outline" size="small" color="primary"  slot="end"><ion-icon slot="start" name="star"></ion-icon>registro</ion-button>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="fullheight xc">
-
+  <div class="fullheight xc"> 
     <ion-item-group>
 
       <div class="fullheight xc"> 
@@ -36,27 +29,32 @@
       </ion-item>
       </div>
 
+
+      <!-- colocar icons -->
+
       <div class="fullheight xc" id="titulo-app">    
-        <ion-label color="success">inicio de sesión</ion-label>     
+        <ion-label color="dark">iniciar sesión</ion-label>     
       </div>
 
+      <form [formGroup]="ionicForm" (ngSubmit)="iniciar()">
       <ion-item>
-        <ion-label color="dark" position="stacked">usuario</ion-label>
-        <ion-input color="warning" placeholder="ej: vilma2000"></ion-input>
+        <ion-label color="dark" position="floating">usuario</ion-label>
+        <ion-input formControlName="username" type="text" color="warning" placeholder="ej: vilma2000" ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label color="dark" position="stacked">contraseña</ion-label>
-        <ion-input color="danger" type="password" placeholder="******"></ion-input>
+        <ion-label color="dark" position="floating">contraseña</ion-label>
+        <ion-input formControlName="password" color="danger" type="password" placeholder="*********" ></ion-input>
       </ion-item>
 
-       <div class="fullheight xc">  
-        <ion-button color="primary" fill="outline" size="small">acceder</ion-button>
-       </div>
+        <div class="fullheight xc">
+        <ion-button type="submit" [disabled]="ionicForm.invalid" color="secondary" fill="outline" size="small">acceder</ion-button>
+        </div>
+
+
+      </form>
 
 
    </ion-item-group>
-
-
   </div>
 </ion-content>

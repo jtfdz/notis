@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InicioPageRoutingModule } from './inicio-routing.module';
+import { CrearNotaPageRoutingModule } from './crear-nota-routing.module';
 
-import { InicioPage } from './inicio.page';
+import { CrearNotaPage } from './crear-nota.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InicioPageRoutingModule
+    CrearNotaPageRoutingModule
   ],
-  declarations: [InicioPage]
+  declarations: [CrearNotaPage]
 })
-export class InicioPageModule {}
+export class CrearNotaPageModule {}

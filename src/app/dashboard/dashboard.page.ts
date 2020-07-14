@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {AuthService} from '../auth.service';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
-  styleUrls: ['./dashboard.page.scss'],
+  styleUrls: ['./dashboard.page.scss', '../app.component.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage {
 
-  constructor() { }
+  constructor(
+    public authService : AuthService) { }
 
-  ngOnInit() {
+  logout(){
+    this.authService.presentAlertConfirm();
   }
+
+
 
 }
