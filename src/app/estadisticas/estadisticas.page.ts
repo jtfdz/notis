@@ -1,15 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {AuthService} from '../auth.service';
+
 
 @Component({
   selector: 'app-estadisticas',
   templateUrl: './estadisticas.page.html',
   styleUrls: ['./estadisticas.page.scss', '../app.component.scss'],
 })
-export class EstadisticasPage implements OnInit {
+export class EstadisticasPage  {
 
-  constructor() { }
 
-  ngOnInit() {
+  baseUrl: string = '/estadisticas';	
+  arr : any = []; 
+  tipo: String; 
+  dia: String;   
+  mes: String; 
+
+
+
+  constructor(public authService : AuthService)
+     {  }
+
+  logout(){
+    this.authService.presentAlertConfirm();
   }
+
+
+    ionViewWillEnter(){
+  	this.authService.getRequest(this.baseUrl)
+        .then((response) => {
+          switch(response['status']) { 
+                    case 200: {
+                    	this.dia = response['data'][1][0]['count'];
+						this.mes = response['data'][2][0]['count'];				
+						switch(response['data'][0][0]['tipo_contenido']){  
+							case 1:  this.tipo = "texto"; break; 
+							case 2:  this.tipo = "imagen"; break; 
+							case 3:  this.tipo = "recordatorio"; break; 
+							}
+                       break; 
+                     } 
+                     default: { 
+                       console.log('ERROR. PROBLEMAS.');
+                       break; 
+                    } 
+                  }
+        }).catch(error => {
+            console.log(error);
+            });
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

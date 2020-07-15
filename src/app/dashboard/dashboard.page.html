@@ -5,27 +5,75 @@
       </ion-title>
 
     <ion-button (click)="logout()" class="drop" size="small" color="danger" slot="end">  
-      <ion-icon slot="start" name="log-out-outline"></ion-icon>cerrar sesión</ion-button>
-
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>desconectar</ion-button>
+ 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-    <ion-buttons>
-    <ion-button [routerLink]="['/estadisticas']" fill="outline" class="drop" size="small" color="dark" slot="start">  
-      <ion-icon name="stats-chart-outline"></ion-icon>estadísticas
-  </ion-button>
-
-  <ion-button [routerLink]="['/crearnota']" fill="outline" class="drop" size="small" color="dark" slot="end"><ion-icon name="add"></ion-icon>crear nota</ion-button>
-      </ion-buttons>
+    <div class="centerme">
+      <ion-label color="dark">dashboard</ion-label>  
+    </div>
 
 
 
+   
+          
+    <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+      <ion-card *ngFor="let notas of arr">
+
+        <ion-item >
+            <ion-button icon-only (click)="pin(notas)" slot="start" color="light"><ion-icon name="pin-outline"></ion-icon></ion-button>
+            <ion-label>{{notas.titulo}}</ion-label>
+            </ion-item>  
+
+        <ion-card-content>
+          {{notas.contenido}}
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-list>
+
+      
 
 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="dark" size="small"><ion-icon name="settings"></ion-icon></ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button color="dark" [routerLink]="['/crearnota']" size="large">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="dark" >
+            <ion-icon name="brush-outline"></ion-icon>
+          </ion-fab-button >
+          <ion-fab-button color="dark" >
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="dark" >
+            <ion-icon name="search-outline"></ion-icon>
+          </ion-fab-button >
+          <ion-fab-button  color="dark" [routerLink]="['/estadisticas']">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </ion-fab-button>                    
+        </ion-fab-list>
+      </ion-fab>
+
+
 
 </ion-content>

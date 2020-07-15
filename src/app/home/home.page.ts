@@ -18,7 +18,11 @@ export class HomePage implements OnInit {
 
   }
 
-  constructor(public formBuilder: FormBuilder, private authService : AuthService, private router: Router) { this.ionicForm = this.createMyForm(); }
+  constructor(
+    public formBuilder: FormBuilder, 
+    private authService : AuthService, 
+    private router: Router) 
+  { this.ionicForm = this.createMyForm(); }
 
 
   private createMyForm(){

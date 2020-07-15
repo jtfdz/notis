@@ -14,9 +14,12 @@ export class RegistroPage {
   ionicForm: FormGroup;
   baseUrl: string = '/registro';
 
-  constructor(private router: Router, public formBuilder: FormBuilder, public authService : AuthService) { this.ionicForm = this.createMyForm(); }
+  constructor(private router: Router, 
+    public formBuilder: FormBuilder, 
+    public authService : AuthService) 
+  { this.ionicForm = this.createMyForm(); }
 
-//AGREGAR MÁS VALIDACIONES
+//AGREGAR MÁS VALIDACIONES, LAS DE CONTRASE;A PARECEN NO SIRVEN
   createMyForm(){
     return this.formBuilder.group({
       nombre: ['', Validators.required],

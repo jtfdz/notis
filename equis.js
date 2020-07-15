@@ -2,8 +2,10 @@
 
 
 
-
-
+                <div class="smallit"><ion-label color="primary" position="stacked" size="small">*aparecerá en tope de dashboard</ion-label></div>
+smallit{
+  width: 35%
+}
 
 <ion-button [routerLink]="['/inicio']" color="dark">Inicio de Sesión<ion-icon slot="end" name="star"></ion-icon></ion-button>
 
@@ -11,6 +13,26 @@
 <ion-button   color="warning">Warning</ion-button>
 
 
+        <ion-item-options> 
+
+          <ion-button icon-only (click)="borrar(notas)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+        </ion-item-options>
+
+
+    <ion-list >
+      <ion-item-sliding *ngFor="let notas of arr">
+        <ion-item>
+
+          <ion-label color="dark">{{notas.titulo}}</ion-label>  
+          <ion-label color="primary">{{notas.contenido}}</ion-label> 
+
+        </ion-item>  
+        <ion-item-options> 
+          <ion-button icon-only (click)="pin(notas)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button icon-only (click)="borrar(notas)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+        </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
 
 
 

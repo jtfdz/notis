@@ -54,5 +54,27 @@ export class AuthService {
 
 
 
+   async notaVolver() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: '¿descartar avances?',
+      buttons: [
+        {
+          text: 'no',
+          handler: () => {
+            alert.dismiss();
+          }
+        }, {
+          text: 'sí',
+          handler: () => {
+              this.router.navigate(['/dashboard']); 
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
   
 }

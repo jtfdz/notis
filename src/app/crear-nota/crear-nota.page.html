@@ -5,7 +5,7 @@
       𝖓𝖔𝖙𝖙𝖔
     </ion-title>
 
-	   <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>cerrar sesión
+	   <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>desconectar
     </ion-button>
 
   </ion-toolbar>
@@ -20,18 +20,19 @@
         <ion-label color="dark">crear nota</ion-label>     
       </div>
 
+    <form [formGroup]="ionicForm" (ngSubmit)="iniciar()">
 
       <ion-item>
         <ion-label color="warning" position="floating">título</ion-label>
         <container-element [ngSwitch]="seleccionTipo" class="drop">
            <div *ngSwitchCase="1">
-              <ion-input type="text" placeholder="ej: lista de peliculas" ></ion-input>             
+              <ion-input formControlName="titulo" type="text" placeholder="ej: lista de peliculas" ></ion-input>             
            </div>
            <div *ngSwitchCase="2">
-              <ion-input type="text" placeholder="ej: fotos de piscinas" ></ion-input>
+              <ion-input type="text" formControlName="titulo"  placeholder="ej: fotos de piscinas" ></ion-input>
            </div>
            <div *ngSwitchCase="3">
-              <ion-input type="text" placeholder="ej: cumpleaños de julieta" ></ion-input>
+              <ion-input formControlName="titulo" type="text" placeholder="ej: cumpleaños de julieta" ></ion-input>
            </div>
            <div *ngSwitchDefault>        
             <ion-input type="text" disabled ></ion-input>
@@ -41,8 +42,8 @@
 
       <ion-list>
         <ion-item>
-          <ion-label color="secondary">tipo</ion-label>
-          <ion-select [(ngModel)]="seleccionTipo" placeholder="selección">
+          <ion-label color="danger">tipo</ion-label>
+          <ion-select (ionChange)="clean()" formControlName="tipo" [(ngModel)]="seleccionTipo" placeholder="selección">
             <ion-select-option value="1">texto</ion-select-option>
             <ion-select-option value="2">imagen</ion-select-option>
             <ion-select-option value="3">recordatorio</ion-select-option>
@@ -50,39 +51,37 @@
         </ion-item>
       </ion-list>
 
-      <ion-item>
 
+      <ion-item>
         <container-element [ngSwitch]="seleccionTipo" class="drop">
            <div *ngSwitchCase="1">
               <ion-label color="primary" position="stacked">contenido</ion-label>
-              <ion-textarea inputmode="text" placeholder="ej: mononoke hime, ghost in the shell"></ion-textarea>             
+              <ion-textarea formControlName="contenido" inputmode="text" placeholder="ej: mononoke hime, ghost in the shell"></ion-textarea>             
            </div>
            <div *ngSwitchCase="2">
-             <ion-label color="primary" position="stacked">seleccione archivo:</ion-label>
-             <ion-input accept="jpg,png" type="file"></ion-input>
+              <ion-label color="primary" position="stacked">seleccione archivo:</ion-label>
+              <ion-input formControlName="contenido" accept="jpg,png" type="file"></ion-input>
            </div>
            <div *ngSwitchCase="3">
-               <ion-label color="primary" position="stacked">seleccione fecha:</ion-label>
-                <ion-datetime displayFormat="D-M-YYYY" value="2020-11-17"></ion-datetime>
-                <div class="smallit"><ion-label color="primary" position="stacked" size="small">*aparecerá en tope de dashboard</ion-label></div>
+               <ion-label color="success" position="stacked">seleccione fecha:</ion-label>
+                <ion-datetime formControlName="contenido" displayFormat="DD MM YYYY" placeholder="2020-11-17"></ion-datetime>
            </div>
-           <div *ngSwitchDefault>valor no válido.</div>
+           <div *ngSwitchDefault>valor no válido.</div>          
         </container-element>
-
-
-
-      </ion-item>
+       </ion-item>
 
 
 
        <div class="fullheight xc">  
-        <ion-button [routerLink]="['/dashboard']" fill="outline" class="drop" size="small" color="danger" slot="start">  
+        <ion-button (click)="volver()" fill="outline" class="drop" size="small" color="warning" slot="start">  
           <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>volver
       </ion-button>
-         <ion-button fill="outline" class="drop" size="small" color="success" slot="start">  
-          <ion-icon slot="start" name="arrow-forward-circle-outline"></ion-icon>guardar
+         <ion-button type="submit" [disabled]="ionicForm.invalid" fill="outline" class="drop" size="small" color="success" slot="start">  
+          <ion-icon slot="start" name="checkmark-done-circle-outline"></ion-icon>guardar
       </ion-button>
        </div>
+
+    </form>
 
    </ion-item-group>
   </div>
