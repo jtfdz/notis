@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   baseUrl: string = 'http://localhost:3000';
+  
 
   constructor(
   	private http : HttpClient,
@@ -23,6 +24,11 @@ export class AuthService {
   public getRequest(url) {
     return this.http.get(this.baseUrl + url, { withCredentials: true }).toPromise()
   }
+
+  public deleteRequest(url) {
+    return this.http.delete(this.baseUrl + url, { withCredentials: true }).toPromise()
+  }
+
 
    async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -50,6 +56,9 @@ export class AuthService {
     });
     await alert.present();
   }
+
+
+
 
 
 

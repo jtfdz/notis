@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'crearnota',
     loadChildren: () => import('./crear-nota/crear-nota.module').then( m => m.CrearNotaPageModule)
   },
+  {
+    path: 'editar-nota',
+    loadChildren: () => import('./editar-nota/editar-nota.module').then( m => m.EditarNotaPageModule)
+  },
+  {
+    path: 'borrar-nota/:id',
+    loadChildren: () => import('./borrar-nota/borrar-nota.module').then( m => m.BorrarNotaPageModule)
+  },
 ];
 
 @NgModule({

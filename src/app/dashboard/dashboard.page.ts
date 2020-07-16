@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from '../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +13,13 @@ export class DashboardPage {
   baseUrl: string = '/notas';	
   arr : any = [];
   nombre: string;
+  borrado: boolean = false;  
+  editado: boolean = false; 
 
 
-  constructor(public authService : AuthService)
+  constructor(
+    public authService : AuthService,
+    private router: Router)
      {  }
 
 
@@ -51,9 +56,39 @@ export class DashboardPage {
    }
 
 
+
+
+
+
   ionViewDidLeave(){
-  		this.arr = [];
-       }
+  	this.arr = [];
+    this.borrado = false;
+    this.editado = false;   
+  }
+
+
+  pin(notas){
+    console.log(notas);
+  }
+
+  //pagina nueva
+  editar(notas){
+    console.log(notas);
+  }  
+
+  activarBorrado(){
+    this.borrado = !this.borrado;
+  }
+
+  activarEditado(){
+    this.editado = !this.editado;
+  }
+
+
+
+
+
+
 
 
 

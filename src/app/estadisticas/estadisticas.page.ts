@@ -25,26 +25,31 @@ export class EstadisticasPage  {
     this.authService.presentAlertConfirm();
   }
 
+  checkEmpty(value){
+      if(value[0] === undefined) return "0";
+      else return value[0]['count'];
+    }
 
     ionViewWillEnter(){
+
   	this.authService.getRequest(this.baseUrl)
         .then((response) => {
           switch(response['status']) { 
-                    case 200: {
-                    	this.dia = response['data'][1][0]['count'];
-						this.mes = response['data'][2][0]['count'];				
-						switch(response['data'][0][0]['tipo_contenido']){  
-							case 1:  this.tipo = "texto"; break; 
-							case 2:  this.tipo = "imagen"; break; 
-							case 3:  this.tipo = "recordatorio"; break; 
-							}
-                       break; 
-                     } 
-                     default: { 
-                       console.log('ERROR. PROBLEMAS.');
-                       break; 
-                    } 
-                  }
+            case 200: {
+              this.dia = this.checkEmpty(response['data'][1]);
+  						this.mes = this.checkEmpty(response['data'][2]);				
+  						switch(response['data'][0][0]['tipo_contenido']){  
+  							case 1:  this.tipo = "texto"; break; 
+  							case 2:  this.tipo = "imagen"; break; 
+  							case 3:  this.tipo = "recordatorio"; break; 
+  							}
+                break; 
+               } 
+               default: { 
+                 console.log('ERROR. PROBLEMAS.');
+                 break; 
+              } 
+            }
         }).catch(error => {
             console.log(error);
             });

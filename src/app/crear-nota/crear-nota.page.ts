@@ -41,6 +41,7 @@ export class CrearNotaPage {
 
   volver(){
     this.authService.notaVolver();
+    
   }
 
 
