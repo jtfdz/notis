@@ -29,6 +29,10 @@ export class AuthService {
     return this.http.delete(this.baseUrl + url, { withCredentials: true }).toPromise()
   }
 
+  public putRequest(url, grupoForma) {
+    return this.http.put(this.baseUrl + url, grupoForma, { withCredentials: true }).toPromise()
+  }
+
 
    async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -56,10 +60,6 @@ export class AuthService {
     });
     await alert.present();
   }
-
-
-
-
 
 
 

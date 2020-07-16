@@ -1,9 +1,11 @@
 <ion-header  class="ion-no-border">
   <ion-toolbar>
-	    <ion-title color="dark" size="large" slot="start" class="drop">
-	      𝖓𝖔𝖙𝖙𝖔
-	    </ion-title>
-	   <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>desconectar
+
+    <ion-title color="dark" size="large" slot="start" class="drop">
+      𝖓𝖔𝖙𝖙𝖔
+    </ion-title>
+
+     <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>desconectar
     </ion-button>
 
   </ion-toolbar>
@@ -13,18 +15,37 @@
   <div class="fullheight xc">
     <ion-item-group>
 
-    <div class="fullheight xc" id="titulo-app">    
+
+      <div class="fullheight xc" id="titulo-app">    
         <ion-label color="dark">editar nota</ion-label>     
       </div>
 
+    <form [formGroup]="ionicForm" (ngSubmit)="editar()">
 
-      
+      <ion-item>
+        <ion-label color="secondary" position="floating">título</ion-label>
+         <ion-input formControlName="titulo" type="text" value="{{titulo}}"></ion-input>             
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="secondary" position="floating">contenido</ion-label>
+         <ion-input formControlName="contenido" type="text" value="{{contenido}}"></ion-input>             
+      </ion-item>
+
+
+
+       <div class="fullheight xc">  
+        <ion-button (click)="volver()" fill="outline" class="drop" size="small" color="warning" slot="start">  
+          <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>volver
+      </ion-button>
+         <ion-button type="submit" [disabled]="ionicForm.invalid" fill="outline" class="drop" size="small" color="success" slot="start">  
+          <ion-icon slot="start" name="checkmark-done-circle-outline"></ion-icon>guardar
+      </ion-button>
+       </div>
+
+    </form>
 
    </ion-item-group>
   </div>
-
-
-
-
-
 </ion-content>
+

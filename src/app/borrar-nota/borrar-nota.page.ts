@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './borrar-nota.page.html',
   styleUrls: ['./borrar-nota.page.scss', '../app.component.scss'],
 })
-export class BorrarNotaPage implements OnInit {
+export class BorrarNotaPage {
 
 	id = null;
 	baseUrl: String = '/nota/';
@@ -29,7 +29,7 @@ export class BorrarNotaPage implements OnInit {
 		this.id = this.activatedRoute.snapshot.paramMap.get('id');
 	}
 
-	ionViewDidEnter(){
+	ionViewWillEnter(){
   	this.authService.getRequest(this.baseUrl + this.id)
         .then((response) => {
           switch(response['status']) { 

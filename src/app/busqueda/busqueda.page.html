@@ -1,0 +1,29 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-title color="dark" size="large" slot="start" class="drop">
+      𝖓𝖔𝖙𝖙𝖔
+    </ion-title>
+
+	   <ion-button slot="end" (click)="logout()" fill="outline" size="small" class="drop" color="danger">  <ion-icon slot="start" name="log-out-outline"></ion-icon>desconectar
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullheight xc">
+
+
+      <div class="fullheight xc" id="titulo-app">    
+        <ion-label color="dark">crear nota</ion-label>     
+      </div>
+
+      <div class="fullheight xc">  
+        <ion-button [routerLink]="['/dashboard']" fill="outline" class="drop" size="small" color="warning" slot="start">  
+          <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>volver
+      </ion-button>
+       </div>
+
+  </div>
+</ion-content>

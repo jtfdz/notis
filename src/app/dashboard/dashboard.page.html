@@ -19,9 +19,9 @@
       <ion-card *ngFor="let notas of arr">
         <ion-item>
             <ion-button icon-only (click)="pin(notas.id_nota)" slot="start" color="light"><ion-icon name="pin-outline"></ion-icon></ion-button>
-            <ion-label>{{notas.titulo}}</ion-label> 
+            <ion-text>{{notas.titulo}}</ion-text> 
             <ion-button routerLink="/borrar-nota/{{notas.id_nota}}" *ngIf="borrado" icon-only  slot="end" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-            <ion-button *ngIf="editado" icon-only (click)="editar(notas.id_nota)" slot="end" color="secondary"><ion-icon name="brush-outline"></ion-icon></ion-button>
+            <ion-button *ngIf="editado" icon-only routerLink="/editar-nota/{{notas.id_nota}}"  slot="end" color="secondary"><ion-icon name="brush-outline"></ion-icon></ion-button>
         </ion-item> 
         <ion-card-content>
           {{notas.contenido}}
@@ -44,7 +44,7 @@
       <ion-fab-button *ngIf="!editado" id="borradoactivo" color="dark" (click)="activarBorrado()">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button *ngIf="!borrado && !editado" color="dark" >
+      <ion-fab-button *ngIf="!borrado && !editado" color="dark" [routerLink]="['/busqueda']">
         <ion-icon name="search-outline"></ion-icon>
       </ion-fab-button >
       <ion-fab-button *ngIf="!borrado && !editado"  color="dark" [routerLink]="['/estadisticas']">
